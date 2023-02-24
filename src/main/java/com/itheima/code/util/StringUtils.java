@@ -1,7 +1,7 @@
 package com.itheima.code.util;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:字符串处理
  * @Date 2019/6/14 19:51
  *****/
@@ -30,7 +30,7 @@ public class StringUtils {
      * @return
      */
     public static String replaceTab(String str){
-        return str.replaceFirst("tab_","").replaceFirst("tb_","");
+        return str.replaceFirst("tab_","").replaceFirst("tb_","").replaceFirst("t_","");
     }
 
     /***

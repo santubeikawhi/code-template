@@ -3,13 +3,16 @@ package com.itheima.code.build;
 import com.itheima.code.swagger.*;
 import com.itheima.code.util.*;
 import javafx.scene.control.Tab;
+import org.springframework.format.datetime.DateFormatter;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:模板创建
  *               有该对象调用其他对象的构建
  * @Date 2019/6/14 19:14
@@ -19,8 +22,21 @@ public class TemplateBuilder {
     //配置文件
     private static Properties props = new Properties();
 
+    //basePackage
+    public static String PACKAGE_BASE;
+
     //pojoPackage
     public static String PACKAGE_POJO;
+
+    //reqPackage
+    public static String PACKAGE_REQ;
+
+
+    //reqPackage
+    public static String PACKAGE_VO;
+    
+    //moduleName
+    public static String MODULE_NAME;
 
     //mapperPackage
     public static String PACKAGE_MAPPER;
@@ -61,7 +77,11 @@ public class TemplateBuilder {
             props.load(is);
 
             //获取对应的配置信息
+            PACKAGE_BASE = props.getProperty("basePackage");
             PACKAGE_POJO = props.getProperty("pojoPackage");
+            PACKAGE_REQ = props.getProperty("reqPackage");
+            PACKAGE_VO = props.getProperty("voPackage");
+            MODULE_NAME = props.getProperty("moduleName");
             PACKAGE_MAPPER = props.getProperty("mapperPackage");
             PACKAGE_SERVICE_INTERFACE = props.getProperty("serviceInterfacePackage");
             PACKAGE_SERVICE_INTERFACE_IMPL = props.getProperty("serviceInterfaceImplPackage");
@@ -72,7 +92,8 @@ public class TemplateBuilder {
             SERVICENAME = props.getProperty("serviceName");
             SWAGGERUI_PATH = props.getProperty("swaggeruipath");
             //工程路径
-            PROJECT_PATH=TemplateBuilder.class.getClassLoader().getResource("").getPath().replace("/target/classes/","")+"/src/main/java/";
+//            PROJECT_PATH=TemplateBuilder.class.getClassLoader().getResource("").getPath().replace("/target/classes/","")+"/src/main/java/";
+            PROJECT_PATH="D:/cita/workspace/dapmarket/user/src/main/java/";
 
             //加载数据库驱动
             Class.forName(props.getProperty("driver"));
@@ -109,6 +130,9 @@ public class TemplateBuilder {
                 while (tableResultSet.next()){
                     //获取表名
                     String tableName=tableResultSet.getString("TABLE_NAME");
+                    if(Boolean.FALSE.equals(tableName.equals(props.getProperty("tableName")))){
+                        continue;
+                    }
                     //名字操作,去掉tab_,tb_，去掉_并转驼峰
                     String table = StringUtils.replace_(StringUtils.replaceTab(tableName));
                     //大写对象
@@ -176,6 +200,10 @@ public class TemplateBuilder {
                     modelMap.put("TableName",tableName);
                     modelMap.put("models",models);
                     modelMap.put("typeSet",typeSet);
+                    modelMap.put("needId",false);
+                    modelMap.put("lombok",true);
+                    modelMap.put("author","rivus");
+                    modelMap.put("currentDateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                     //主键操作
                     modelMap.put("keySetMethod","set"+StringUtils.firstUpper(StringUtils.replace_(key)));
                     modelMap.put("keyType",keyType);
@@ -183,6 +211,12 @@ public class TemplateBuilder {
 
                     //创建JavaBean
                     PojoBuilder.builder(modelMap);
+                    //创建PageReq
+                    PageReqBuilder.builder(modelMap);
+                    //创建SaveReq
+                    SaveReqBuilder.builder(modelMap);
+                    //创建Vo
+                    VoBuilder.builder(modelMap);
 
                     //创建Controller
                     ControllerBuilder.builder(modelMap);
@@ -197,7 +231,7 @@ public class TemplateBuilder {
                     ServiceImplBuilder.builder(modelMap);
 
                     //创建Feign
-                    FeignBuilder.builder(modelMap);
+//                    FeignBuilder.builder(modelMap);
 
                     //添加swagger路径映射
                     String format="string";
@@ -212,7 +246,7 @@ public class TemplateBuilder {
                 swaggerModelMap.put("swaggerModels",swaggerModels);
                 swaggerModelMap.put("swaggerPathList",swaggerPathList);
                 //生成Swagger文件
-                SwaggerBuilder.builder(swaggerModelMap);
+//                SwaggerBuilder.builder(swaggerModelMap);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:Dao构建
  * @Date 2019/6/14 19:13
  *****/
@@ -23,7 +23,7 @@ public class DaoBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/dao",
                 "Mapper.java",
-                TemplateBuilder.PACKAGE_MAPPER,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_MAPPER,
                 "Mapper.java");
     }
 

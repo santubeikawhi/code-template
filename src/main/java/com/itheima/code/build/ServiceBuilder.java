@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:Service构建
  * @Date 2019/6/14 19:13
  *****/
@@ -23,7 +23,7 @@ public class ServiceBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/service",
                 "Service.java",
-                TemplateBuilder.PACKAGE_SERVICE_INTERFACE,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_SERVICE_INTERFACE,
                 "Service.java");
     }
 

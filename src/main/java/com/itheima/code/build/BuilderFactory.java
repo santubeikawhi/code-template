@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:构建对象的工厂
  * @Date 2019/6/14 23:21
  *****/
@@ -24,7 +24,12 @@ public class BuilderFactory {
                                 String suffix){      //生成文件后缀名字
         try {
             //获取模板对象
-            Template template = TemplateUtil.loadTemplate(ControllerBuilder.class.getResource(templatePath).getPath(), templateFile);
+            Template template = null;
+            try {
+                template = TemplateUtil.loadTemplate(ControllerBuilder.class.getResource(templatePath).getPath(), templateFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             //创建文件夹
             String path = TemplateBuilder.PROJECT_PATH+storePath.replace(".","/");

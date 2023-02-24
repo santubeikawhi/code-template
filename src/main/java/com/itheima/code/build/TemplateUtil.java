@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:创建模板，以及输出生成的文件
  * @Date 2019/6/14 20:09
  *****/
@@ -41,8 +41,12 @@ public class TemplateUtil {
      */
     public static void writer(Template template,Map dataModel,String file) throws Exception{
         //包参数
+        dataModel.put("package_base",TemplateBuilder.PACKAGE_BASE);
+        dataModel.put("module_name",TemplateBuilder.MODULE_NAME);
         dataModel.put("package_controller",TemplateBuilder.PACKAGE_CONTROLLER);
         dataModel.put("package_pojo",TemplateBuilder.PACKAGE_POJO);
+        dataModel.put("package_req",TemplateBuilder.PACKAGE_REQ);
+        dataModel.put("package_vo",TemplateBuilder.PACKAGE_VO);
         dataModel.put("package_mapper",TemplateBuilder.PACKAGE_MAPPER);
         dataModel.put("package_service",TemplateBuilder.PACKAGE_SERVICE_INTERFACE);
         dataModel.put("package_service_impl",TemplateBuilder.PACKAGE_SERVICE_INTERFACE_IMPL);

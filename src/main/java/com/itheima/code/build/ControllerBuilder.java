@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:Controller构建
  * @Date 2019/6/14 19:13
  *****/
@@ -23,7 +23,7 @@ public class ControllerBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/controller",
                 "Controller.java",
-                TemplateBuilder.PACKAGE_CONTROLLER,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_CONTROLLER,
                 "Controller.java");
     }
 

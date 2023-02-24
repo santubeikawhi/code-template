@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:ServiceImpl构建
  * @Date 2019/6/14 19:13
  *****/
@@ -22,7 +22,7 @@ public class ServiceImplBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/service/impl",
                 "ServiceImpl.java",
-                TemplateBuilder.PACKAGE_SERVICE_INTERFACE_IMPL,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_SERVICE_INTERFACE_IMPL,
                 "ServiceImpl.java");
     }
 

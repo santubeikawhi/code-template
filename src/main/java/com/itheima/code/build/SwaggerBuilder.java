@@ -3,7 +3,7 @@ package com.itheima.code.build;
 import java.util.Map;
 
 /*****
- * @Author: shenkunlin
+ * @Author: rivus
  * @Date: 2019/7/22 11:34
  * @Description: com.itheima.code.build
  *  生成Swagger
@@ -22,7 +22,7 @@ public class SwaggerBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/swagger",
                 "swagger.json",
-                TemplateBuilder.SWAGGERUI_PATH,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.SWAGGERUI_PATH,
                 ".json");
     }
 }

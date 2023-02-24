@@ -1,9 +1,5 @@
 package com.itheima.code.build;
 
-import freemarker.template.Template;
-
-import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 
 /****
@@ -11,7 +7,7 @@ import java.util.Map;
  * @Description:Pojo构建
  * @Date 2019/6/14 19:13
  *****/
-public class PojoBuilder {
+public class VoBuilder {
 
 
     /***
@@ -22,10 +18,10 @@ public class PojoBuilder {
         dataModel.put("needId", false);
         //生成Pojo层文件
         BuilderFactory.builder(dataModel,
-                "/template/pojo",
-                "Pojo.java",
-                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_POJO,
-                ".java");
+                "/template/vo",
+                "Vo.java",
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_VO,
+                "Vo.java");
     }
 
 }

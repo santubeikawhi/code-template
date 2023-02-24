@@ -1,6 +1,5 @@
-package ${package_base}.${module_name}.${package_pojo};
+package ${package_base}.${module_name}.${package_req};
 
-import com.baomidou.mybatisplus.annotation.TableName;
 <#if swagger==true>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +13,7 @@ import ${set};
 
 /**
  * @Author:rivus
- * @Description:${Table} Entity
+ * @Description:${Table}SaveReq
  * @Date ${currentDateTime}
  */
 
@@ -24,8 +23,7 @@ import ${set};
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("${TableName}")
-public class ${Table} extends BaseEntity<Long>{
+public class ${Table}SaveReq {
 <#list models as model>
     <#if needId == true>
 	<#if swagger==true>
@@ -42,7 +40,7 @@ public class ${Table} extends BaseEntity<Long>{
 	@Column(name = "${model.column}")
 	private ${model.simpleType} ${model.name};//${model.desc!""}
 	</#if>
-	<#if model.name != 'id' && model.name != 'createdAt' && model.name != 'updatedAt' && model.name != 'deleted'>
+	<#if model.name != 'id' >
 	<#if swagger==true>
 	/**
 	 * ${model.desc!""}

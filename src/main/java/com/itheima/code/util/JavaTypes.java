@@ -1,7 +1,7 @@
 package com.itheima.code.util;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:
  * @Date 2019/6/14 18:27
  *****/
@@ -33,11 +33,11 @@ public class JavaTypes {
             case -1:
                 return "java.lang.String";
             case 91:
-                return "java.util.Date";
+                return "java.time.LocalDate";
             case 92:
-                return "java.util.Date";
+                return "ava.time.LocalDateTime";
             case 93:
-                return "java.util.Date";
+                return "java.time.LocalDateTime";
             case 16:
                 return "java.lang.Boolean";
             default:
@@ -51,7 +51,8 @@ public class JavaTypes {
      * @return
      */
     public static String simpleName(String type){
-        return type.replace("java.lang.","").replaceFirst("java.util.","");
+        return type.replace("java.lang.","").replaceFirst("java.util.","")
+                .replaceFirst("java.time.","");
     }
 
     /***

@@ -3,7 +3,7 @@ package com.itheima.code.build;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:rivus
  * @Description:Feign构建
  * @Date 2019/6/14 19:13
  *****/
@@ -19,7 +19,7 @@ public class FeignBuilder {
         BuilderFactory.builder(modelMap,
                 "/template/feign",
                 "Feign.java",
-                TemplateBuilder.PACKAGE_FEIGN,
+                TemplateBuilder.PACKAGE_BASE+"."+TemplateBuilder.MODULE_NAME+"."+TemplateBuilder.PACKAGE_FEIGN,
                 "Feign.java");
     }
 

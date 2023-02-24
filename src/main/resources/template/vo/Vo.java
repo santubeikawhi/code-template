@@ -1,6 +1,5 @@
-package ${package_base}.${module_name}.${package_pojo};
+package ${package_base}.${module_name}.${package_vo};
 
-import com.baomidou.mybatisplus.annotation.TableName;
 <#if swagger==true>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +13,7 @@ import ${set};
 
 /**
  * @Author:rivus
- * @Description:${Table} Entity
+ * @Description:${Table}Vo
  * @Date ${currentDateTime}
  */
 
@@ -24,25 +23,24 @@ import ${set};
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("${TableName}")
-public class ${Table} extends BaseEntity<Long>{
+public class ${Table}Vo extends BaseVo<Long> {
 <#list models as model>
-    <#if needId == true>
+	<#if needId == true>
 	<#if swagger==true>
 	@ApiModelProperty(value = "${model.desc!""}",required = false)
 	</#if>
-    <#if model.name == 'id'>
+	<#if model.name == 'id'>
 	<#if model.id==true>
 	@Id
 	<#if model.identity=='YES'>
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	</#if>
 	</#if>
 	</#if>
 	@Column(name = "${model.column}")
 	private ${model.simpleType} ${model.name};//${model.desc!""}
 	</#if>
-	<#if model.name != 'id' && model.name != 'createdAt' && model.name != 'updatedAt' && model.name != 'deleted'>
+	<#if model.name != 'id' >
 	<#if swagger==true>
 	/**
 	 * ${model.desc!""}
