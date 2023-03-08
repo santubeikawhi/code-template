@@ -93,8 +93,8 @@ public class TemplateBuilder {
             SWAGGERUI_PATH = props.getProperty("swaggeruipath");
             //工程路径
 //            PROJECT_PATH=TemplateBuilder.class.getClassLoader().getResource("").getPath().replace("/target/classes/","")+"/src/main/java/";
-            PROJECT_PATH="D:/cita/workspace/dapmarket/user/src/main/java/";
-
+//            PROJECT_PATH="D:/cita/workspace/dapmarket/user/src/main/java/";
+            PROJECT_PATH = props.getProperty("projectPath");
             //加载数据库驱动
             Class.forName(props.getProperty("driver"));
         } catch (Exception e) {
