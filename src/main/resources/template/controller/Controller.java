@@ -10,6 +10,7 @@ import com.rivtower.rivtrust.core.domain.RestVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * @Author:rivus
@@ -22,7 +23,7 @@ import java.util.List;
 @CrossOrigin
 public class ${Table}Controller {
 
-    @Autowired
+    @Resource
     private ${Table}Service ${table}Service;
 
     /***
@@ -33,7 +34,7 @@ public class ${Table}Controller {
     <#if swagger==true>
     @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
-    @PostMapping(value = "/noAuth/page" )
+    @GetMapping(value = "/noAuth/page" )
     public RestVo<Page<${Table}Vo>> noAuthPage(${Table}PageReq ${table}PageReq){
         return RestVo.SUCCESS(${table}Service.page(${table}PageReq));
     }
@@ -46,7 +47,7 @@ public class ${Table}Controller {
     <#if swagger==true>
     @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
-    @PostMapping(value = "/page" )
+    @GetMapping(value = "/page" )
     public RestVo<Page<${Table}Vo>> page(${Table}PageReq ${table}PageReq){
         return RestVo.SUCCESS(${table}Service.page(${table}PageReq));
     }
@@ -59,7 +60,7 @@ public class ${Table}Controller {
     <#if swagger==true>
     @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
-    @PostMapping(value = "/noAuth/list" )
+    @GetMapping(value = "/noAuth/list" )
     public RestVo<List<${Table}Vo>> noAuthList(${Table}PageReq ${table}PageReq){
         return RestVo.SUCCESS(${table}Service.list(${table}PageReq));
     }
@@ -72,7 +73,7 @@ public class ${Table}Controller {
     <#if swagger==true>
     @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
-    @PostMapping(value = "/list" )
+    @GetMapping(value = "/list" )
     public RestVo<List<${Table}Vo>> list(${Table}PageReq ${table}PageReq){
         return RestVo.SUCCESS(${table}Service.list(${table}PageReq));
     }
