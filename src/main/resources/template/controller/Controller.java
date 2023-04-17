@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @Description:
  * @Date ${currentDateTime}
  */
-<#if swagger==true>@Api(value = "${Table}Controller")</#if>
+<#if swagger==true>@Api(tags = "${Table}Controller")</#if>
 @RestController
 @RequestMapping("/${table}")
 @CrossOrigin
@@ -32,7 +32,7 @@ public class ${Table}Controller {
      * @return
      */
     <#if swagger==true>
-    @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
+    @ApiOperation("${Table}条件分页查询")
     </#if>
     @GetMapping(value = "/noAuth/page" )
     public RestVo<Page<${Table}Vo>> noAuthPage(${Table}PageReq ${table}PageReq){
@@ -45,7 +45,7 @@ public class ${Table}Controller {
      * @return
      */
     <#if swagger==true>
-    @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
+    @ApiOperation("${Table}条件分页查询")
     </#if>
     @GetMapping(value = "/page" )
     public RestVo<Page<${Table}Vo>> page(${Table}PageReq ${table}PageReq){
@@ -53,12 +53,12 @@ public class ${Table}Controller {
     }
 
     /***
-     * ${Table}分页条件搜索实现 列表——分页——不鉴权
+     * ${Table}分页条件搜索实现 列表——不分页——不鉴权
      * @param ${table}PageReq
      * @return
      */
     <#if swagger==true>
-    @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
+    @ApiOperation("${Table}条件分页查询")
     </#if>
     @GetMapping(value = "/noAuth/list" )
     public RestVo<List<${Table}Vo>> noAuthList(${Table}PageReq ${table}PageReq){
@@ -71,7 +71,7 @@ public class ${Table}Controller {
      * @return
      */
     <#if swagger==true>
-    @ApiOperation(value = "${Table}条件分页查询",notes = "分页条件查询${Table}方法详情",tags = {"${Table}Controller"})
+    @ApiOperation("${Table}条件分页查询")
     </#if>
     @GetMapping(value = "/list" )
     public RestVo<List<${Table}Vo>> list(${Table}PageReq ${table}PageReq){

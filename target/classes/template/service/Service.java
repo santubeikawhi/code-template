@@ -1,66 +1,30 @@
-package ${package_service};
-import ${package_pojo}.${Table};
-import com.github.pagehelper.PageInfo;
+package ${package_base}.${module_name}.${package_service};
+
+import ${package_base}.${module_name}.${package_pojo}.${Table};
+import ${package_base}.${module_name}.${package_req}.${Table}PageReq;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.List;
-/****
- * @Author:shenkunlin
- * @Description:${Table}业务层接口
- * @Date 2019/6/14 0:16
- *****/
+
+/**
+ * @Author:${author}
+ * @Description:${Table} Service
+ * @Date ${currentDateTime}
+ */
+
 public interface ${Table}Service {
-
-    /***
-     * ${Table}多条件分页查询
-     * @param ${table}
-     * @param page
-     * @param size
+    
+    /**
+     * 列表-分页
+     * @param ${table}PageReq
      * @return
      */
-    PageInfo<${Table}> findPage(${Table} ${table}, int page, int size);
-
-    /***
-     * ${Table}分页查询
-     * @param page
-     * @param size
-     * @return
-     */
-    PageInfo<${Table}> findPage(int page, int size);
-
-    /***
-     * ${Table}多条件搜索方法
-     * @param ${table}
-     * @return
-     */
-    List<${Table}> findList(${Table} ${table});
-
-    /***
-     * 删除${Table}
-     * @param id
-     */
-    void delete(${keyType} id);
-
-    /***
-     * 修改${Table}数据
-     * @param ${table}
-     */
-    void update(${Table} ${table});
-
-    /***
-     * 新增${Table}
-     * @param ${table}
-     */
-    void add(${Table} ${table});
+    Page<${Table}> page(${Table}PageReq ${table}PageReq);
 
     /**
-     * 根据ID查询${Table}
-     * @param id
+     * 列表
+     * @param ${table}PageReq
      * @return
      */
-     ${Table} findById(${keyType} id);
-
-    /***
-     * 查询所有${Table}
-     * @return
-     */
-    List<${Table}> findAll();
+    List<${Table}> list(${Table}PageReq ${table}PageReq);
+    
 }

@@ -40,7 +40,7 @@ public class ${Table}Vo extends BaseVo<Long> {
 	@Column(name = "${model.column}")
 	private ${model.simpleType} ${model.name};//${model.desc!""}
 	</#if>
-	<#if model.name != 'id' >
+	<#if model.name != 'id' && model.name != 'createdAt' && model.name != 'updatedAt' && model.name != 'deleted'>
 	<#if swagger==true>
 	/**
 	 * ${model.desc!""}
