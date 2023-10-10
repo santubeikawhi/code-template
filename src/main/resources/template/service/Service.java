@@ -2,6 +2,7 @@ package ${package_base}.${module_name}.${package_service};
 
 import ${package_base}.${module_name}.${package_pojo}.${Table};
 import ${package_base}.${module_name}.${package_req}.${Table}PageReq;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @Date ${currentDateTime}
  */
 
-public interface ${Table}Service {
+public interface ${Table}Service extends IService<${Table}>  {
     
     /**
      * 列表-分页

@@ -19,7 +19,7 @@ public interface ${Table}Feign {
      * @param size
      * @return
      */
-    @PostMapping(value = "/search/{page}/{size}" )
+    @PostMapping(value = "/search/{page}/{size}" ) 
     Result<PageInfo> findPage(@RequestBody(required = false) ${Table} ${table}, @PathVariable  int page, @PathVariable  int size);
 
     /***

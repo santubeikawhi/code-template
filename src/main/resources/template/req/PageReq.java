@@ -18,7 +18,7 @@ import ${set};
  */
 
 <#if swagger==true>
-@ApiModel(description = "${Table}",value = "${Table}")
+@ApiModel(description = "${Table}PageReq",value = "${Table}PageReq")
 </#if>
 @Data
 @AllArgsConstructor

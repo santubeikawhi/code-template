@@ -17,26 +17,25 @@ import java.util.List;
  */
 
 @Service
-public class ${Table}ServiceImpl extends
-        RivTowerAbstractServiceImpl<${Table}Mapper, ${Table}, ${Table}PageReq> implements ${Table}Service {
+public class ${Table}ServiceImpl extends RivTowerAbstractServiceImpl<${Table}Mapper, ${Table}, ${Table}PageReq> implements ${Table}Service {
 
-    @Override
-    QueryWrapper<${Table}> condition(QueryWrapper<${Table}> queryWrapper, ${Table}PageReq req) {
-<#list models as model>
-<#if model.name != 'id' >
-<#if model.simpleType == 'String'>
-        //${model.desc!""}
-        if (StringUtils.isNotEmpty(req.get${model.upperName}())) {
-</#if>
-<#if model.simpleType != 'String'>
-        //${model.desc!""}
-        if (ObjectUtils.isNotEmpty(req.get${model.upperName}())) {
-</#if>
-            queryWrapper.lambda().eq(${Table}::get${model.upperName}, req.get${model.upperName}());
-        }
-</#if>        
-</#list>
-        return queryWrapper;
-    }
+  @Override
+  QueryWrapper<${Table}> condition(QueryWrapper<${Table}> queryWrapper, ${Table}PageReq req) {
+  <#list models as model>
+  <#if model.name != 'id' >
+  <#if model.simpleType == 'String'>
+      //${model.desc!""}
+      if (StringUtils.isNotEmpty(req.get${model.upperName}())) {
+  </#if>
+  <#if model.simpleType != 'String'>
+      //${model.desc!""}
+      if (ObjectUtils.isNotEmpty(req.get${model.upperName}())) {
+  </#if>
+          queryWrapper.lambda().eq(${Table}::get${model.upperName}, req.get${model.upperName}());
+      }
+  </#if>        
+  </#list>
+      return queryWrapper;
+  }
 
 }
